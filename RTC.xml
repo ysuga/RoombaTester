@@ -5,7 +5,7 @@
     </rtc:BasicInfo>
     <rtc:Actions>
         <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
-        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
         <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
@@ -13,7 +13,7 @@
         <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
-        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
         <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
         <rtc:OnAction xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>

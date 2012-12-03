@@ -79,7 +79,7 @@ class RoombaTest
    * 
    * 
    */
-  // virtual RTC::ReturnCode_t onFinalize();
+   virtual RTC::ReturnCode_t onFinalize();
 
   /***
    *
@@ -144,7 +144,7 @@ class RoombaTest
    * 
    * 
    */
-  // virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
+   virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
 
   /***
    *

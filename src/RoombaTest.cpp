@@ -9,6 +9,9 @@
 
 #include "RoombaTest.h"
 
+#include "YConsole.h"
+using namespace net::ysuga;
+
 // Module specification
 // <rtc-template block="module_spec">
 static const char* roombatest_spec[] =
@@ -76,15 +79,18 @@ RTC::ReturnCode_t RoombaTest::onInitialize()
   // <rtc-template block="bind_config">
   // </rtc-template>
   
+  init_scr();
+  
   return RTC::RTC_OK;
 }
 
-/*
+
 RTC::ReturnCode_t RoombaTest::onFinalize()
 {
+  exit_scr();
   return RTC::RTC_OK;
 }
-*/
+
 
 /*
 RTC::ReturnCode_t RoombaTest::onStartup(RTC::UniqueId ec_id)
@@ -112,12 +118,27 @@ RTC::ReturnCode_t RoombaTest::onDeactivated(RTC::UniqueId ec_id)
   return RTC::RTC_OK;
 }
 
-/*
+
 RTC::ReturnCode_t RoombaTest::onExecute(RTC::UniqueId ec_id)
 {
+  clear_scr();
+  if(myKbhit()) {
+    int c = myGetch();
+    switch(c) {
+    case 'd':
+      m_serviceName.data = "dock";
+      m_serviceNameOut.write();
+      break;
+    case 'c':
+      m_serviceName.data = "clean";
+      m_serviceNameOut.write();
+      break;
+    default:
+      break;
+    }
+  }
   return RTC::RTC_OK;
 }
-*/
 
 /*
 RTC::ReturnCode_t RoombaTest::onAborting(RTC::UniqueId ec_id)
