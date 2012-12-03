@@ -1,0 +1,54 @@
+# RoombaTest CMake config file
+#
+# This file sets the following variables:
+# RoombaTest_FOUND - Always TRUE.
+# RoombaTest_INCLUDE_DIRS - Directories containing the RoombaTest include files.
+# RoombaTest_IDL_DIRS - Directories containing the RoombaTest IDL files.
+# RoombaTest_LIBRARIES - Libraries needed to use RoombaTest.
+# RoombaTest_DEFINITIONS - Compiler flags for RoombaTest.
+# RoombaTest_VERSION - The version of RoombaTest found.
+# RoombaTest_VERSION_MAJOR - The major version of RoombaTest found.
+# RoombaTest_VERSION_MINOR - The minor version of RoombaTest found.
+# RoombaTest_VERSION_REVISION - The revision version of RoombaTest found.
+# RoombaTest_VERSION_CANDIDATE - The candidate version of RoombaTest found.
+
+message(STATUS "Found RoombaTest-@PROJECT_VERSION@")
+set(RoombaTest_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(RoombaTest_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(RoombaTest_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(RoombaTest_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(RoombaTest_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(RoombaTest_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(RoombaTest_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(RoombaTest_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(RoombaTest_VERSION @PROJECT_VERSION@)
+set(RoombaTest_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(RoombaTest_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(RoombaTest_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(RoombaTest_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
