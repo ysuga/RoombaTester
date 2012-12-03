@@ -49,6 +49,7 @@ if(NOT WIN32)
     list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 endif(NOT WIN32)
 find_package(OpenRTM REQUIRED)
+find_package(OpenCV REQUIRED)
 
 # Universal settings
 #enable_testing()
