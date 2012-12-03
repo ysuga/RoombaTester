@@ -12,17 +12,21 @@ add_definitions(${OPENRTM_CFLAGS})
 add_definitions(${OMNIORB_CFLAGS})
 add_definitions(${OPENCV_CFLAGS})
 
+list(APPEND OPENCV_LIBRARIES opencv_core opencv_highgui)
+
 link_directories(${OPENRTM_LIBRARY_DIRS})
-link_directories(${OMNIORB_LIBRARY_DIRS})
 link_directories(${OPENCV_LIBRARY_DIRS})
+link_directories(${OMNIORB_LIBRARY_DIRS})
+
 
 add_library(${PROJECT_NAME_LOWER} ${LIB_TYPE} ${comp_srcs} ${ALL_IDL_SRCS})
 set_source_files_properties(${ALL_IDL_SRCS} PROPERTIES GENERATED 1)
 add_dependencies(${PROJECT_NAME_LOWER} ALL_IDL_TGT)
-target_link_libraries(${PROJECT_NAME_LOWER} ${OPENRTM_LIBRARIES} ${OPENCV_LIBRARIES})
+target_link_libraries(${PROJECT_NAME_LOWER} ${OPENCV_LIBRARIES} ${OPENRTM_LIBRARIES})
+
 
 add_executable(${PROJECT_NAME_LOWER}comp ${standalone_srcs})
-target_link_libraries(${PROJECT_NAME_LOWER}comp ${PROJECT_NAME_LOWER})
+target_link_libraries(${PROJECT_NAME_LOWER}comp ${PROJECT_NAME_LOWER}) 
 
 install(TARGETS ${PROJECT_NAME_LOWER} ${PROJECT_NAME_LOWER}comp
     EXPORT ${PROJECT_NAME_LOWER}

@@ -29,8 +29,11 @@
 
 // </rtc-template>
 
+#include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+
+
 using namespace RTC;
 
 /*!
@@ -230,6 +233,10 @@ class RoombaTest
 
   // DataInPort declaration
   // <rtc-template block="inport_declare">
+  RTC::CameraImage m_currentImg;
+  /*!
+   */
+  InPort<RTC::CameraImage> m_currentImgIn;
   RTC::TimedVelocity2D m_currentVel;
   /*!
    */
@@ -272,13 +279,28 @@ class RoombaTest
 
  private:
   // <rtc-template block="private_attribute">
+  IplImage* m_pCapturedImage;
   
+  int m_Height;
+  int m_Width;
+
+  IplImage* m_pDisplayImage;
+
+  IplImage* m_pControllerImage;
+
+  int m_ButtonRadius;
+  CvPoint m_UpBtn, m_DownBtn, m_LeftBtn, m_RightBtn, m_CleanBtn, m_DockBtn;
+
+  bool m_MousePressed;
   // </rtc-template>
 
   // <rtc-template block="private_operation">
-  
+
+
   // </rtc-template>
 
+public:
+  friend void onMouse(int nEvent, int x, int y, int nFlags, void* param);
 };
 
 
