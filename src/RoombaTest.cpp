@@ -12,6 +12,12 @@
 #include "YConsole.h"
 using namespace net::ysuga;
 
+#ifdef WIN32
+#pragma comment(lib, "opencv_core231.lib");
+#pragma comment(lib, "opencv_highgui231.lib");
+#pragma comment(lib, "opencv_imgproc231.lib");
+#endif
+
 void onMouse(int nEvent, int x, int y, int nFlags, void* param);
 // Module specification
 // <rtc-template block="module_spec">

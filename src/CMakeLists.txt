@@ -12,7 +12,9 @@ add_definitions(${OPENRTM_CFLAGS})
 add_definitions(${OMNIORB_CFLAGS})
 add_definitions(${OPENCV_CFLAGS})
 
+if(NOT WIN32)
 list(APPEND OPENCV_LIBRARIES opencv_core opencv_highgui)
+endif(NOT WIN32)
 
 link_directories(${OPENRTM_LIBRARY_DIRS})
 link_directories(${OPENCV_LIBRARY_DIRS})
